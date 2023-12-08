@@ -32,28 +32,36 @@ humidity-to-location map:
 60 56 37
 56 93 4'''
 
+"""
 with open('./day5_seed_fertilizer/inputs.txt', 'r') as archivo:
     e = archivo.read()
 
-
-
+"""
 seeds = e.split('\n\n')[0].split(': ')[1].split(' ')
 seeds = list(map(int, seeds))
 maps = e.split('\n\n')[1:]
 maps = [m.split('\n')[1:] for m in maps]
+seeds_new = []
+
+seed_min = float('inf')
+
+while len(seeds) > 0:
+    seed_prin = seeds.pop(0)
+    seed_fin = seed_prin + seeds.pop(0)
+    seeds = list(map(lambda x: x + seed, list(range(mul))))
+    for i,seed in enumerate(seeds):
+        for ms in maps:
+            for m in ms:
+                m = m.split(' ')
+                m = list(map(int, m))
+                print(seeds[i], m)
+                if seeds[i] >= m[1] and seeds[i] < m[1]+m[2]:
+                    seeds[i] = (seeds[i] - m[1]) + m[0]
+                    print(seeds[i])
+                    break
+seeds = seeds_new
 
 
-location=[]
-for i,seed in enumerate(seeds):
-    for ms in maps:
-        for m in ms:
-            m = m.split(' ')
-            m = list(map(int, m))
-            print(seeds[i], m)
-            if seeds[i] >= m[1] and seeds[i] < m[1]+m[2]:
-                seeds[i] = (seeds[i] - m[1]) + m[0]
-                print(seeds[i])
-                break
         
 
 print(min(seeds))
