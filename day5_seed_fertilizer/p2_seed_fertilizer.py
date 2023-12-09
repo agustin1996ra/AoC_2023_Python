@@ -48,17 +48,19 @@ seed_min = float('inf')
 while len(seeds) > 0:
     seed_prin = seeds.pop(0)
     seed_fin = seed_prin + seeds.pop(0)
-    seeds = list(map(lambda x: x + seed, list(range(mul))))
-    for i,seed in enumerate(seeds):
+    num = 0
+    while seed_prin <= seed_fin:
+        num = seed_prin
         for ms in maps:
             for m in ms:
                 m = m.split(' ')
                 m = list(map(int, m))
-                print(seeds[i], m)
-                if seeds[i] >= m[1] and seeds[i] < m[1]+m[2]:
-                    seeds[i] = (seeds[i] - m[1]) + m[0]
-                    print(seeds[i])
+                print(num, m)
+                if num >= m[1] and num < m[1]+m[2]:
+                    num = (num - m[1]) + m[0]
+                    print(num)
                     break
+        seed_prin += 1
 seeds = seeds_new
 
 
