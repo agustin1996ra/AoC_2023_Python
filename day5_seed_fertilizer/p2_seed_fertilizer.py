@@ -43,7 +43,14 @@ maps = e.split('\n\n')[1:]
 maps = [m.split('\n')[1:] for m in maps]
 seeds_new = []
 
-seed_min = float('inf')
+print(maps)
+
+location_min = float('inf')
+
+
+
+while true:
+
 
 while len(seeds) > 0:
     seed_prin = seeds.pop(0)
